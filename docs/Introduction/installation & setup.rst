@@ -11,7 +11,7 @@ UASM for 64bit assembler
 
 - Download and install the `UASM <http://www.terraspace.co.uk/uasm.html>`_ assembler. Ideally you will have a setup that mimics the MASM32 setup, where you create manually folders for ``bin``, ``include`` and ``lib``
 
-- Download the UASM64 Library: `UASM64-Library.zip <https://github.com/mrfearless/UASM64-Library/blob/master/releases/UASM64-Library.zip?raw=true>`_
+- Download the UASM64 Library: `UASM64-Library.zip <https://github.com/mrfearless/UASM64-Library/blob/main/releases/UASM64-Library.zip?raw=true>`_
 
 - Copy the ``UASM64.inc`` file to ``X:\UASM\Include`` folder overwriting any previous versions.
 

@@ -18,7 +18,7 @@ The **UASM64 Library** and source code are free to use for anyone, and anyone ca
 
 # Download
 
-* Download the latest release: [UASM64-Library.zip](https://github.com/mrfearless/UASM64-Library/blob/master/releases/UASM64-Library.zip?raw=true)
+* Download the latest release: [UASM64-Library.zip](https://github.com/mrfearless/UASM64-Library/blob/main/releases/UASM64-Library.zip?raw=true)
 
 # Setup
 
