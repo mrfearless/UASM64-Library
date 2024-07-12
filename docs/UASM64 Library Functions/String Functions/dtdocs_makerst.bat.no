@@ -1,0 +1,81 @@
+@echo off
+
+rem delete temp files
+for /f "Tokens=*" %%a in ('dir *. /b/a-d') do (
+    del %%a
+)
+
+echo.>String_Append
+echo.>String_CatStr
+echo.>String_Compare
+echo.>String_CompareI
+echo.>String_CompareIEx
+echo.>String_Copy
+echo.>String_Count
+echo.>String_InString
+echo.>String_Left
+echo.>String_LeftTrim
+echo.>String_Length
+echo.>String_Lowercase
+echo.>String_Middle
+echo.>String_MonoSpace
+echo.>String_MultiCat
+echo.>String_Remove
+echo.>String_Replace
+echo.>String_Reverse
+echo.>String_Right
+echo.>String_RightTrim
+echo.>String_Trim
+echo.>String_Uppercase
+echo.>String_WordReplace
+
+
+rem bare files to rst   
+
+for /f "Tokens=*" %%a in ('dir *. /b/a-d') do (
+    echo... _%%a:>%%a.rst
+    echo.>>%%a.rst
+    echo ===================================>>%%a.rst
+    echo %%a >>%%a.rst
+    echo ===================================>>%%a.rst
+    echo.>>%%a.rst
+    echo... delete this starting at \.\. and type description>>%%a.rst
+    echo.>>%%a.rst    
+    echo ::>>%%a.rst
+    echo.>>%%a.rst
+    echo    %%a^(^)>>%%a.rst
+    echo.>>%%a.rst
+    echo.>>%%a.rst
+    echo **Parameters**>>%%a.rst
+    echo.>>%%a.rst
+    echo * **>>%%a.rst
+    echo * **>>%%a.rst
+    echo * **>>%%a.rst
+    echo.>>%%a.rst
+    echo.>>%%a.rst
+    echo **Returns**>>%%a.rst
+    echo.>>%%a.rst
+    echo.>>%%a.rst
+    echo.>>%%a.rst
+    echo **Notes**>>%%a.rst
+    echo.>>%%a.rst
+    echo.>>%%a.rst
+    echo.>>%%a.rst
+    echo **Example**>>%%a.rst
+    echo.>>%%a.rst
+    echo ::>>%%a.rst
+    echo.>>%%a.rst
+    echo    %%a^(^)>>%%a.rst
+    echo.>>%%a.rst
+    echo **See Also**>>%%a.rst
+    echo.>>%%a.rst
+    echo :ref:``, :ref:`` >>%%a.rst
+    echo.>>%%a.rst
+)  
+
+rem delete temp files
+for /f "Tokens=*" %%a in ('dir *. /b/a-d') do (
+    del %%a > nul
+)
+
+del "%a.rst" > nul

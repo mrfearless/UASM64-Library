@@ -1,0 +1,13 @@
+@ECHO OFF
+REM ;==========================================================================
+REM ;
+REM ; UASM64 Library
+REM ;
+REM ; https://github.com/mrfearless/UASM64-Library
+REM ;
+REM ;==========================================================================
+
+REM For manually the building UASM64 Library from the command line
+
+UASM64.EXE /c /coff /Cp /nologo -Zp8 /win64 /D_WIN64 /I"\UASM64\Include" *.asm
+LIB *.obj /out:UASM64.lib

@@ -1,0 +1,27 @@
+#define VERINF1 1
+VERINF1 VERSIONINFO
+FILEVERSION 0,0,0,0
+PRODUCTVERSION 0,0,0,0
+FILEOS 0x00000004
+FILETYPE 0x00000001
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "040904B0"
+    BEGIN
+      VALUE "CompanyName", "UASM64 Library\0"
+      VALUE "FileVersion", "0.0.0.0\0"
+      VALUE "FileDescription", "UASM64 Library Test\0"
+      VALUE "InternalName", "UASM64LibTest.exe\0"
+      VALUE "LegalCopyright", "UASM64 Library\0"
+      VALUE "LegalTrademarks", "UASM64 Library\0"
+      VALUE "OriginalFilename", "UASM64LibTest.exe\0"
+      VALUE "ProductName", "UASM64 Library Test\0"
+      VALUE "ProductVersion", "0.0.0.0\0"
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x0409, 0x04B0
+  END
+END

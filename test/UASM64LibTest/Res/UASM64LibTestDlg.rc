@@ -1,0 +1,17 @@
+#define IDD_DIALOG 1000
+#define IDC_EdtTests 1001
+#define IDC_SBR1 1002
+#define IDC_LblTests 1003
+#define IDC_BtnExit 1004
+IDD_DIALOG DIALOGEX 4,3,284,236
+CAPTION "UASM64 Library Test - For Testing UASM64 Library Functions"
+FONT 12,"Segoe UI",400,0
+CLASS "DLGCLASS"
+STYLE 0x10CA0800
+EXSTYLE 0x00000000
+BEGIN
+  CONTROL "",IDC_EdtTests,"Edit",0x50A10004,6,19,271,177,0x00000000
+  CONTROL " UASM64 Library - https://github.com/mrfearless/UASM64",IDC_SBR1,"msctls_statusbar32",0x50000003,0,228,284,8,0x00000000
+  CONTROL "Function results shown in the edit box below:",IDC_LblTests,"Static",0x50000000,6,7,273,8,0x00000000
+  CONTROL "E&xit",IDC_BtnExit,"Button",0x50010000,214,200,64,15,0x00000000
+END

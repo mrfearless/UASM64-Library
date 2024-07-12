@@ -1,0 +1,73 @@
+@echo off
+
+rem delete temp files
+for /f "Tokens=*" %%a in ('dir *. /b/a-d') do (
+    del %%a
+)
+
+echo.>CPU_CPUID_Supported
+echo.>CPU_MMX_Supported
+echo.>CPU_SSE_Supported
+echo.>CPU_SSE2_Supported
+echo.>CPU_SSE3_Supported
+echo.>CPU_SSSE3_Supported
+echo.>CPU_SSE41_Supported
+echo.>CPU_SSE42_Supported
+echo.>CPU_AESNI_Supported
+echo.>CPU_AVX_Supported
+echo.>CPU_AVX2_Supported
+echo.>CPU_RDRAND_Supported
+echo.>CPU_RDSEED_Supported
+echo.>CPU_HT_Supported
+echo.>CPU_Logical_Cores
+echo.>CPU_Brand
+
+rem bare files to rst   
+
+for /f "Tokens=*" %%a in ('dir *. /b/a-d') do (
+    echo... _%%a:>%%a.rst
+    echo.>>%%a.rst
+    echo ===================================>>%%a.rst
+    echo %%a >>%%a.rst
+    echo ===================================>>%%a.rst
+    echo.>>%%a.rst
+    echo... delete this starting at \.\. and type description>>%%a.rst
+    echo.>>%%a.rst    
+    echo ::>>%%a.rst
+    echo.>>%%a.rst
+    echo    %%a^(^)>>%%a.rst
+    echo.>>%%a.rst
+    echo.>>%%a.rst
+    echo **Parameters**>>%%a.rst
+    echo.>>%%a.rst
+    echo * ````>>%%a.rst
+    echo * ````>>%%a.rst
+    echo * ````>>%%a.rst
+    echo.>>%%a.rst
+    echo.>>%%a.rst
+    echo **Returns**>>%%a.rst
+    echo.>>%%a.rst
+    echo.>>%%a.rst
+    echo.>>%%a.rst
+    echo **Notes**>>%%a.rst
+    echo.>>%%a.rst
+    echo.>>%%a.rst
+    echo.>>%%a.rst
+    echo **Example**>>%%a.rst
+    echo.>>%%a.rst
+    echo ::>>%%a.rst
+    echo.>>%%a.rst
+    echo    %%a^(^)>>%%a.rst
+    echo.>>%%a.rst
+    echo **See Also**>>%%a.rst
+    echo.>>%%a.rst
+    echo :ref:``, :ref:`` >>%%a.rst
+    echo.>>%%a.rst
+)  
+
+rem delete temp files
+for /f "Tokens=*" %%a in ('dir *. /b/a-d') do (
+    del %%a > nul
+)
+
+del "%a.rst" > nul

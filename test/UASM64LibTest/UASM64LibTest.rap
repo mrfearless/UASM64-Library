@@ -1,0 +1,145 @@
+[Project]
+Assembler=UASM64
+Type=Win64 App
+Description=UASM64LibTest
+Backup=$P\Bak\
+Group=1
+GroupExpand=1
+Ver.rc=1
+[Files]
+1=UASM64LibTest.Asm
+2=UASM64LibTest.Inc
+3=UASM64LibTest.Rc
+4=UASM64LibTest.dlg
+5=UASM64LibTest.mnu
+[MakeFiles]
+0=UASM64LibTest.rap
+1=UASM64LibTest.rc
+2=UASM64LibTest.asm
+3=UASM64LibTest.obj
+4=UASM64LibTest.res
+5=UASM64LibTest.exe
+6=UASM64LibTest.def
+7=UASM64LibTest.dll
+8=UASM64LibTest.txt
+9=UASM64LibTest.lib
+10=UASM64LibTest.mak
+11=UASM64LibTest.hla
+12=UASM64LibTest.com
+13=
+14=
+15=
+16=
+17=
+18=UASM64LibTest.pdb
+[MakeDef]
+Menu=1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0
+1=4,O,$B\RC.EXE /v,1
+2=3,O,$B\UASM64.exe /c -win64 -Zp8 -win64 /win64 /D_WIN64 /Cp /nologo /W2 /I"$I",2
+3=5,O,$B\LINK.EXE /SUBSYSTEM:WINDOWS /RELEASE /VERSION:4.0 /MACHINE:X64 /LIBPATH:"$L" /OUT:"$5",3,4
+4=0,0,,5
+5=rsrc.obj,O,$B\CVTRES.EXE,rsrc.res
+6=*.obj,O,$B\UASM64.EXE /c -win64 -Zp8 -win64 /win64 /D_WIN64 /Cp /nologo /W2 /I"$I",*.asm
+7=0,0,"$E\x64\x64dbg",5
+11=4,O,$B\RC.EXE /v,1
+12=3,O,$B\UASM64.EXE /c -win64 -Zp8 /Zi /win64 /D_WIN64 /Cp /nologo /W2 /Zi /Zd /nologo /I"$I",2
+13=5,O,$B\LINK.EXE /SUBSYSTEM:WINDOWS /DEBUG /DEBUGTYPE:CV /PDB:"$18" /VERSION:4.0 /MACHINE:X64 /LIBPATH:"$L" /OUT:"$5",3,4
+14=0,0,,5
+15=rsrc.obj,O,$B\CVTRES.EXE,rsrc.res
+16=*.obj,O,$B\UASM64.EXE /c /coff /Cp /Zi /Zd /nologo /I"$I",*.asm
+17=0,0,"$E\x64\x64dbg",$.exe
+[Resource]
+1=,1,8,UASM64LibTest.xml
+[StringTable]
+[VerInf]
+FV=0.0.0.0
+FileVersion=0.0.0.0
+PV=0.0.0.0
+ProductVersion=0.0.0.0
+Nme=VERINF1
+ID=1
+VerOS=0x00000004
+VerFT=0x00000001
+VerLNG=0x00000409
+VerCHS=0x000004B0
+ProductName=UASM64 Library Test
+OriginalFilename=UASM64LibTest.exe
+LegalTrademarks=UASM64 Library
+LegalCopyright=UASM64 Library
+InternalName=UASM64LibTest.exe
+FileDescription=UASM64 Library Test
+CompanyName=UASM64 Library
+[Group]
+Group=Assembly,Resources,Misc
+1=1
+2=1
+3=2
+4=2
+5=2
+[AutoLoad]
+AutoLoad=2,4,1
+[RADebugBP]
+2=
+1=
+[Find]
+1="HT"
+2="'0"
+3=",13,10,0"
+4="13h,10h,0h"
+[VersionControl]
+Settings=1279
+Milestones=129
+MilestoneEvery=10
+MilestoneEveryCurrent=1
+MilestoneOnBuild=0.0.0.0
+MilestoneOnTime=2
+MilestoneOnDate=0
+MilestoneOnDateWhen=1
+MilestoneOnDateStatus=0
+MilestoneOnDateDate=12
+MilestoneOnDateTimeYear=2024
+MilestoneOnDateTimeMonth=7
+MilestoneOnDateTimeDate=11
+MilestoneOnDateTimeHour=13
+MilestoneOnDateTimeMin=44
+MilestoneOnDateTimeSec=17
+MilestoneOnDateTimeStatus=0
+BackupLocation=M:\radasm\UASM64\Projects\VCBackups\
+CompressionLevel=0
+DefaultComment=Project $N, $Z, Backup Created On $D At $T.
+ExcludeExt1=\
+ExcludeExt2=\
+ExcludeExt3=\
+ExcludeExt4=\
+FileVerLength=4
+FileVer2Range=0
+FileVer3Range=0
+FileVer4Range=0
+ProductVerLength=4
+ProductVer2Range=0
+ProductVer3Range=0
+ProductVer4Range=0
+[PTimer]
+PTimer=18836798
+[Collapse]
+1=1,
+2=
+[Size]
+1=0,0,0,0,404
+2=0,0,0,0,3126
+4=0,0,0,0
+[GroupExpand]
+GroupExpand=1,0,1,0
+[BookMark]
+0=
+1=
+2=
+3=
+4=
+5=
+6=
+7=
+8=
+9=
+[BreakPoint]
+0=

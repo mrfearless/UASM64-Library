@@ -1,0 +1,4 @@
+#include "Res/UASM64LibTestVer.rc"
+#include "Res/UASM64LibTestMnu.rc"
+#include "Res/UASM64LibTestDlg.rc"
+#include "Res/UASM64LibTestRes.rc"

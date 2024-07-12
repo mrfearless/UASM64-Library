@@ -1,0 +1,6 @@
+;------------------------------------------------------------------------------------------------
+; UASM64 Library - https://github.com/mrfearless/UASM64-Library
+;
+; Paste the text below at the end of \WinAsm\API\Uasm64ApiConst.vaa to add these to WinASM
+;
+;------------------------------------------------------------------------------------------------

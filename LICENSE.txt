@@ -1,0 +1,17 @@
+==============================================================================
+
+ UASM64 Library
+
+ https://github.com/mrfearless/UASM64-Library
+
+==============================================================================
+
+This software is provided 'as-is', without any express or implied warranty. 
+In no event will the author(s) be held liable for any damages arising from 
+the use of this software.
+
+All credit and thanks to all the original authors and code contributors of 
+the functions in the MASM32 Library.
+
+The UASM64 library and source code are free to use for anyone, and anyone can 
+contribute to the UASM64 Library project.

@@ -1,0 +1,64 @@
+@echo off
+
+rem delete temp files
+for /f "Tokens=*" %%a in ('dir *. /b/a-d') do (
+    del %%a
+)
+
+echo.>File_Exists
+echo.>File_Size
+echo.>File_ReadFileToMemory
+echo.>File_WriteMemoryToFile
+echo.>Path_GetAppPath
+echo.>Path_GetPathOnly
+echo.>Path_NameFromPath
+
+rem bare files to rst   
+
+for /f "Tokens=*" %%a in ('dir *. /b/a-d') do (
+    echo... _%%a:>%%a.rst
+    echo.>>%%a.rst
+    echo ===================================>>%%a.rst
+    echo %%a >>%%a.rst
+    echo ===================================>>%%a.rst
+    echo.>>%%a.rst
+    echo... delete this starting at \.\. and type description>>%%a.rst
+    echo.>>%%a.rst    
+    echo ::>>%%a.rst
+    echo.>>%%a.rst
+    echo    %%a^(^)>>%%a.rst
+    echo.>>%%a.rst
+    echo.>>%%a.rst
+    echo **Parameters**>>%%a.rst
+    echo.>>%%a.rst
+    echo * **>>%%a.rst
+    echo * **>>%%a.rst
+    echo * **>>%%a.rst
+    echo.>>%%a.rst
+    echo.>>%%a.rst
+    echo **Returns**>>%%a.rst
+    echo.>>%%a.rst
+    echo.>>%%a.rst
+    echo.>>%%a.rst
+    echo **Notes**>>%%a.rst
+    echo.>>%%a.rst
+    echo.>>%%a.rst
+    echo.>>%%a.rst
+    echo **Example**>>%%a.rst
+    echo.>>%%a.rst
+    echo ::>>%%a.rst
+    echo.>>%%a.rst
+    echo    %%a^(^)>>%%a.rst
+    echo.>>%%a.rst
+    echo **See Also**>>%%a.rst
+    echo.>>%%a.rst
+    echo :ref:``, :ref:`` >>%%a.rst
+    echo.>>%%a.rst
+)  
+
+rem delete temp files
+for /f "Tokens=*" %%a in ('dir *. /b/a-d') do (
+    del %%a > nul
+)
+
+del "%a.rst" > nul

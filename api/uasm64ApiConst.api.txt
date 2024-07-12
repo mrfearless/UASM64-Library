@@ -1,0 +1,7 @@
+;-----------------------------------------------------------------------------------------------------
+; UASM64 Library - https://github.com/mrfearless/UASM64-Library
+;
+; Paste this text at the end of \Radasm\UASM64\Uasm64ApiConst.api to add these to Radasm
+;
+;-----------------------------------------------------------------------------------------------------
+
