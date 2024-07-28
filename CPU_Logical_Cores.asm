@@ -11,14 +11,10 @@
 .x64
 
 option casemap : none
+IF @Platform EQ 1
 option win64 : 11
+ENDIF
 option frame : auto
-option stackbase : rsp
-
-_WIN64 EQU 1
-WINVER equ 0501h
-
-include windows.inc
 
 include UASM64.inc
 
@@ -32,11 +28,19 @@ UASM64_ALIGN
 ; 
 ; Parameters:
 ; 
-; No Parameters.
+; There are no parameters.
 ; 
 ; Returns:
 ; 
 ; RAX contains number of logical cores if supported, or 0 otherwise.
+;
+; Notes:
+;
+; https://en.wikipedia.org/wiki/CPUID#EAX=4_and_EAX=Bh:_Intel_thread/core_and_cache_topology
+;
+; See Also:
+;
+; CPU_Basic_Features, CPU_Signature, CPU_CPUID_Supported, CPU_HTT_Supported
 ; 
 ;------------------------------------------------------------------------------
 CPU_Logical_Cores PROC FRAME USES RBX RCX RDX

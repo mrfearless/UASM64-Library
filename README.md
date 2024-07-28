@@ -10,7 +10,7 @@ The names of the functions and parameter names in the **UASM64 Library** compare
 
 Additionally, new functions have been added to the **UASM64 Library** to expand and compliment the existing functions.
 
-**UASM64 Library** is targetted specifically for use with projects that use the [UASM](http://www.terraspace.co.uk/uasm.html) assembler (the x64 version), but likely other compilers and assemblers can utilize it as well.
+**UASM64 Library** is targeted specifically for use with projects that use the [UASM](http://www.terraspace.co.uk/uasm.html) assembler (the x64 version), but likely other compilers and assemblers can utilize it as well.
 
 All credit and thanks to all the original authors and code contributors of the functions in the MASM32 Library.
 

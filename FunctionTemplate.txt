@@ -11,17 +11,11 @@
 .x64
 
 option casemap : none
+IF @Platform EQ 1
 option win64 : 11
+ENDIF
 option frame : auto
-option stackbase : rsp
 
-_WIN64 EQU 1
-WINVER equ 0501h
-
-include windows.inc
-
-include commctrl.inc
-includelib user32.lib
 includelib kernel32.lib
 
 include UASM64.inc
@@ -47,7 +41,15 @@ UASM64_ALIGN
 ; 
 ; Returns:
 ; 
-; TRUE if succesful, or FALSE otherwise.
+; TRUE if successful, or FALSE otherwise.
+; 
+; Notes:
+;
+; This function as based on the MASM32 Library function: 
+;
+; See Also:
+;
+; 
 ; 
 ;------------------------------------------------------------------------------
 FunctionName PROC FRAME

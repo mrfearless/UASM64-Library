@@ -18,7 +18,7 @@ parameters and features of the original x86 functions from the MASM32 Library
 where possible. In a few functions that may not be possible, and an 
 alternative approach to achieve the same desired result may be used instead.
 
-UASM64 Library is targetted specifically for use with projects that use the 
+UASM64 Library is targeted specifically for use with projects that use the 
 UASM assembler x64 (http://www.terraspace.co.uk/uasm.html), but likely other 
 compilers and assemblers can utilize it as well.
 

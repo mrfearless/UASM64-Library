@@ -11,15 +11,19 @@
 .x64
 
 option casemap : none
+IF @Platform EQ 1
 option win64 : 11
+ENDIF
 option frame : auto
-option stackbase : rsp
 
-_WIN64 EQU 1
-WINVER equ 0501h
-
-include windows.inc
-includelib kernel32.lib
+IF @Platform EQ 1 ; Win x64
+    GetCommandLineA PROTO
+    includelib kernel32.lib
+ENDIF
+IF @Platform EQ 3 ; Linux x64
+; https://baturin.org/blog/hello-from-a-compiler-free-x86-64-world/
+; https://gist.github.com/Gydo194/730c1775f1e05fdca6e9b0c175636f5b
+ENDIF
 
 include UASM64.inc
 
@@ -58,9 +62,12 @@ UASM64_ALIGN
 ; The buffer for the returned argument should be set at 128 bytes in length 
 ; which is the maximum allowable
 ;
+; See Also:
+;
+; Arg_GetCommandLineEx, Arg_GetArgument
+; 
 ;------------------------------------------------------------------------------
 Arg_GetCommandLine PROC FRAME USES RCX RDI RSI nArgument:QWORD, lpszArgumentBuffer:QWORD
-
   ; -------------------------------------------------
   ; arguments returned in "lpszArgumentBuffer"
   ;
@@ -80,7 +87,15 @@ Arg_GetCommandLine PROC FRAME USES RCX RDI RSI nArgument:QWORD, lpszArgumentBuff
     LOCAL cmdBuffer[192] :BYTE
     LOCAL tmpBuffer[192] :BYTE
 
-    Invoke GetCommandLine
+    IF @Platform EQ 3 ; Linux x64
+        mov rax, 0 ; maybe we can get command line later with
+        ; ; https://baturin.org/blog/hello-from-a-compiler-free-x86-64-world/
+        ret
+    ENDIF
+    
+    IF @Platform EQ 1 ; Win x64
+        Invoke GetCommandLineA
+    ENDIF
     mov lpCmdLine, rax        ; address command line
 
   ; -------------------------------------------------

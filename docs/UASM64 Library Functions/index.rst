@@ -8,7 +8,11 @@ UASM64 Library Functions
    :maxdepth: 5
 
    Argument Parsing Functions/index
+   Array Functions/index
    CPU Functions/index
    Conversion Functions/index
    File And Path Functions/index
+   Memory Functions/index
+   Misc Functions/index
    String Functions/index
+   Text Functions/index

@@ -11,12 +11,10 @@
 .x64
 
 option casemap : none
+IF @Platform EQ 1
 option win64 : 11
+ENDIF
 option frame : auto
-option stackbase : rsp
-
-_WIN64 EQU 1
-WINVER equ 0501h
 
 include UASM64.inc
 
@@ -44,6 +42,10 @@ UASM64_ALIGN
 ;
 ; The destination buffer must be large enough to receive the path from the 
 ; complete full filename and path.
+;
+; See Also:
+;
+; Path_GetAppPath, Path_NameFromPath
 ; 
 ;------------------------------------------------------------------------------
 Path_GetPathOnly PROC FRAME USES RCX RDX RDI RSI lpszFullFilenamePath:QWORD, lpszPath:QWORD

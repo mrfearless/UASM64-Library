@@ -11,12 +11,11 @@
 .x64
 
 option casemap : none
+IF @Platform EQ 1
 option win64 : 11
-option frame : auto
-option stackbase : rsp
+ENDIF
 
-_WIN64 EQU 1
-WINVER equ 0501h
+option frame : auto
  
 include UASM64.inc
 
@@ -96,6 +95,10 @@ UASM64_ALIGN
 ; the parser in this algorithm return an empty destination buffer that has an 
 ; ascii zero as it first character.
 ;
+; See Also:
+;
+; Arg_GetCommandLine, Arg_GetCommandLineEx
+; 
 ;------------------------------------------------------------------------------
 Arg_GetArgument PROC FRAME USES RBX RCX RDX RDI RSI lpszArgumentList:QWORD,lpszDestination:QWORD,nArgument:QWORD,qwArgumentListReadOffset:QWORD
 

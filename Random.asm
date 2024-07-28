@@ -11,14 +11,10 @@
 .x64
 
 option casemap : none
+IF @Platform EQ 1
 option win64 : 11
+ENDIF
 option frame : auto
-option stackbase : rsp
-
-_WIN64 EQU 1
-WINVER equ 0501h
-
-include windows.inc
 
 include UASM64.inc
 
@@ -29,13 +25,14 @@ nrandom_seed DQ 12345678
 
 UASM64_ALIGN
 ;------------------------------------------------------------------------------
-; nrandom
+; Random_Number
 ;
-; Generate random number 
+; Generate random number.
 ; 
 ; Parameters:
 ; 
-; * base - Zero based range for random output.
+; * base - Zero based range for random output. If 0 then it used the time 
+;   stamp counter to generate a value from.
 ; 
 ; Returns:
 ; 
@@ -48,8 +45,22 @@ UASM64_ALIGN
 ;
 ; x64 version now uses RDRAND if available instead.
 ; 
+; On a CPU that supports the RDRAND instruction, this is used instead of the
+; original code path ported from the x86 function in the MASM32 Library.
+; 
+; For a CPU that doesnt support RDRAND, we also allow base parameter to be
+; a 0, which will use the time stamp counter to generate a value for us.
+;
+; nrandom_seed global variable is used to store a seed value generated from the
+; Random_Seed function (or default value of 12345678) that is used for CPU's 
+; that dont support RDRAND to generate a random number.
+;
+; See Also:
+;
+; CPU_RDRAND_Supported, CPU_RDSEED_Supported
+;
 ;------------------------------------------------------------------------------
-nrandom PROC FRAME USES RBX RCX RDX base:QWORD
+Random_Number PROC FRAME USES RBX RCX RDX base:QWORD
 
     Invoke CPU_RDRAND_Supported
     .IF rax == TRUE
@@ -76,38 +87,69 @@ nrandom PROC FRAME USES RBX RCX RDX base:QWORD
         xor rdx, rdx
         mov rax, rcx
         mov nrandom_seed, rcx
-        div base
+        .IF base == 0
+            rdtsc
+            mov rbx, rax
+            xor rdx, rdx
+            mov rax, rcx
+            div rbx
+        .ELSE
+            xor rdx, rdx
+            mov rax, rcx
+            div base
+        .ENDIF
         mov rax, rdx
     .ENDIF
     
     ret
-nrandom ENDP
+Random_Number ENDP
 
 UASM64_ALIGN
 ;------------------------------------------------------------------------------
-; nseed
+; Random_Seed
 ;
-; Generate a random seed
+; Generate a random seed.
 ; 
 ; Parameters:
 ; 
-; * TheSeed - seed value to use.
+; * TheSeed - seed value to use. If 0 then uses the time stamp counter to 
+;   generate a value from.
 ; 
 ; Returns:
 ; 
 ; In RAX a random seed.
+;
+; Notes:
 ; 
+; On a CPU that supports the RDSEED instruction, this is used instead of the
+; original code path ported from the x86 function in the MASM32 Library.
+; 
+; For a CPU that doesnt support RDSEED, we also allow TheSeed parameter to be
+; a 0, which will use the time stamp counter to generate a value for us.
+;
+; nrandom_seed global variable is used to store that value for use in the 
+; Random_Number function, for CPU's that dont support RDSEED.
+;
+; See Also:
+;
+; CPU_RDRAND_Supported, CPU_RDSEED_Supported
+;
 ;------------------------------------------------------------------------------
-nseed PROC FRAME TheSeed:QWORD
+Random_Seed PROC FRAME USES RDX TheSeed:QWORD
     Invoke CPU_RDSEED_Supported
     .IF rax == TRUE
         RDSEED rax ; DB 0Fh, 0C7h, 0F8h - `rdseed eax`
     .ELSE
-        mov rax, TheSeed
+        .IF TheSeed == 0
+            rdtsc
+        .ELSE
+            mov rax, TheSeed
+        .ENDIF
+        
     .ENDIF
     mov nrandom_seed, rax
     ret
-nseed ENDP
+Random_Seed ENDP
 
 
 END

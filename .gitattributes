@@ -1,5 +1,6 @@
 * text eol=crlf
 *.exe binary
+*.a binary
 *.dll binary
 *.zip binary
 *.obj binary
@@ -16,8 +17,10 @@
 *.bat linguist-language=Text
 *.tpl linguist-language=Text
 *.rap linguist-language=Text
+*.bat linguist-language=Text
 *.asm linguist-language=Assembly
 *.inc linguist-language=Assembly
+*.rc linguist-language=Text
 *.hsl linguist-language=Text
 makefile linguist-language=Text
 conf.py linguist-language=Python

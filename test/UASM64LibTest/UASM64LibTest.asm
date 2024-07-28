@@ -2,7 +2,7 @@
 ;
 ; UASM64 Library Test (Windows GUI)
 ;
-; fearless - https://github.com/mrfearless/UASM64
+; fearless - https://github.com/mrfearless/UASM64-Library
 ;
 ;==============================================================================
 .686
@@ -18,18 +18,18 @@ option stackbase : rsp
 _WIN64 EQU 1
 WINVER equ 0501h
 
-;DEBUG64 EQU 1
+DEBUG64 EQU 1
 
-;IFDEF DEBUG64
-;    PRESERVEXMMREGS equ 1
-;    includelib \UASM\lib\x64\Debug64.lib
-;    DBG64LIB equ 1
-;    DEBUGEXE textequ <'\UASM\bin\DbgWin.exe'>
-;    include \UASM\include\debug64.inc
-;    .DATA
-;    RDBG_DbgWin	DB DEBUGEXE,0
-;    .CODE
-;ENDIF
+IFDEF DEBUG64
+    PRESERVEXMMREGS equ 1
+    includelib \UASM\lib\x64\Debug64.lib
+    DBG64LIB equ 1
+    DEBUGEXE textequ <'\UASM\bin\DbgWin.exe'>
+    include \UASM\include\debug64.inc
+    .DATA
+    RDBG_DbgWin	DB DEBUGEXE,0
+    .CODE
+ENDIF
 
 include UASM64LibTest.inc
 
@@ -302,6 +302,156 @@ DoUASM64LibraryTests PROC FRAME hWin:QWORD
         Invoke EditShowResult, hEdtTests, Addr szCPUBrandNo
     .ENDIF
     
+    Invoke EditShowFunctionName, hEdtTests, Addr szCPUManufacturer
+    Invoke CPU_Manufacturer
+    .IF rax != NULL
+        mov lpszCPUManufacturer, rax
+        Invoke lstrcpy, Addr szCPUManufacturerBuffer, Addr szCPUManufacturerYes
+        Invoke lstrcat, Addr szCPUManufacturerBuffer, lpszCPUManufacturer
+        Invoke EditShowResult, hEdtTests, Addr szCPUManufacturerBuffer
+    .ELSE
+        Invoke EditShowResult, hEdtTests, Addr szCPUManufacturerNo
+    .ENDIF
+    
+    Invoke EditShowFunctionName, hEdtTests, Addr szCPUManufacturerID
+    Invoke CPU_ManufacturerID
+    mov qwManufacturerID, rax
+    Invoke wsprintf, Addr szManufacturerID, Addr sz64bitIntegerFormat, qwManufacturerID
+    Invoke EditShowResult, hEdtTests, Addr szManufacturerID
+    
+    Invoke EditShowFunctionName, hEdtTests, Addr szCPUHighestBasic
+    Invoke CPU_Highest_Basic
+    mov dwHighestBasic, eax
+    .IF rax != NULL
+        Invoke lstrcpy, Addr szHighestBasicBuffer, Addr szHighestBasicYes
+        Invoke wsprintf, Addr szHighestBasicLevel, Addr sz64bitHexFormat, dwHighestBasic
+        Invoke lstrcat, Addr szHighestBasicBuffer, Addr szHighestBasicLevel
+        Invoke EditShowResult, hEdtTests, Addr szHighestBasicBuffer
+    .ELSE
+        Invoke EditShowResult, hEdtTests, Addr szHighestBasicNo
+    .ENDIF
+    
+    Invoke EditShowFunctionName, hEdtTests, Addr szCPUHighestBasicExt
+    Invoke CPU_Highest_Basic_Ext
+    mov dwMaxBasicExtended, eax
+    .IF rax != -1
+        Invoke lstrcpy, Addr szHighestBasicExtBuffer, Addr szHighestBasicExtYes
+        Invoke wsprintf, Addr szHighestBasicExtLevel, Addr sz64bitHexFormat, dwMaxBasicExtended
+        Invoke lstrcat, Addr szHighestBasicExtBuffer, Addr szHighestBasicExtLevel
+        Invoke EditShowResult, hEdtTests, Addr szHighestBasicExtBuffer
+    .ELSE
+        Invoke EditShowResult, hEdtTests, Addr szHighestBasicExtNo
+    .ENDIF
+    
+    Invoke EditShowFunctionName, hEdtTests, Addr szCPUHighestExtended
+    Invoke CPU_Highest_Extended
+    mov dwHighestExtended, eax
+    .IF rax != NULL
+        Invoke lstrcpy, Addr szHighestExtendedBuffer, Addr szHighestExtendedYes
+        Invoke wsprintf, Addr szHighestExtendedLevel, Addr sz64bitHexFormat, dwHighestExtended
+        Invoke lstrcat, Addr szHighestExtendedBuffer, Addr szHighestExtendedLevel
+        Invoke EditShowResult, hEdtTests, Addr szHighestExtendedBuffer
+    .ELSE
+        Invoke EditShowResult, hEdtTests, Addr szHighestExtendedNo
+    .ENDIF
+    
+    Invoke EditShowFunctionName, hEdtTests, Addr szCPUBasicFeatures
+    Invoke CPU_Basic_Features, Addr lpqwFeatures, Addr lpqwFeaturesSize, CFST_MNEMONIC, CFSS_COMMA, CPU_BF_ECX_COMMON, CPU_BF_EDX_COMMON
+    .IF rax == TRUE
+        Invoke EditShowResult, hEdtTests, lpqwFeatures
+    .ELSE
+        Invoke EditShowResult, hEdtTests, Addr szBasicFeaturesNo
+    .ENDIF
+    
+    Invoke EditShowFunctionName, hEdtTests, Addr szCPUBasicFeaturesExt0
+    Invoke CPU_Basic_Features_Ext0, Addr lpqwFeatures, Addr lpqwFeaturesSize, CFST_MNEMONIC, CFSS_COMMA, -1, -1, -1 ;, Addr dwMaxBasicExtended
+    .IF rax == TRUE
+        Invoke EditShowResult, hEdtTests, lpqwFeatures
+    .ELSE
+        Invoke EditShowResult, hEdtTests, Addr szBasicFeaturesExt0No
+    .ENDIF
+    
+    .IF dwMaxBasicExtended > 0
+        Invoke EditShowFunctionName, hEdtTests, Addr szCPUBasicFeaturesExt1
+        Invoke CPU_Basic_Features_Ext1, Addr lpqwFeatures, Addr lpqwFeaturesSize, CFST_MNEMONIC, CFSS_COMMA, -1, -1, -1, -1
+        .IF rax == TRUE
+            Invoke EditShowResult, hEdtTests, lpqwFeatures
+        .ELSE
+            Invoke EditShowResult, hEdtTests, Addr szBasicFeaturesExt1No
+        .ENDIF
+    .ENDIF
+    
+    .IF dwMaxBasicExtended > 1
+        Invoke EditShowFunctionName, hEdtTests, Addr szCPUBasicFeaturesExt2
+        Invoke CPU_Basic_Features_Ext2, Addr lpqwFeatures, Addr lpqwFeaturesSize, CFST_MNEMONIC, CFSS_COMMA, -1
+        .IF rax == TRUE
+            Invoke EditShowResult, hEdtTests, lpqwFeatures
+        .ELSE
+            Invoke EditShowResult, hEdtTests, Addr szBasicFeaturesExt2No
+        .ENDIF
+    .ENDIF
+    
+    .IF dwHighestExtended >= 80000000h 
+        Invoke EditShowFunctionName, hEdtTests, Addr szCPUExtendedFeatures
+        Invoke CPU_Extended_Features, Addr lpqwFeatures, Addr lpqwFeaturesSize, CFST_MNEMONIC, CFSS_COMMA, -1, -1
+        .IF eax == TRUE
+            Invoke EditShowResult, hEdtTests, lpqwFeatures
+        .ELSE
+            Invoke EditShowResult, hEdtTests, Addr szExtendedFeaturesNo
+        .ENDIF
+    .ENDIF
+    
+    Invoke EditShowFunctionName, hEdtTests, Addr szCPUSignature
+    Invoke CPU_Signature, Addr qwFamilyID, Addr qwExtFamilyID, Addr qwBaseFamilyID, Addr qwModelID, Addr qwExtModelID, Addr qwBaseModelID, Addr qwStepping
+    .IF rax != 0
+        mov qwCPUEAX, rax
+        Invoke wsprintf, Addr szCPUEAXBuffer, Addr sz64bitAsmFormat, qwCPUEAX
+        
+        Invoke wsprintf, Addr szFamilyIDBuffer, Addr sz64bitAsmFormat, qwFamilyID
+        Invoke wsprintf, Addr szExtFamilyIDBuffer, Addr sz64bitAsmFormat, qwExtFamilyID
+        Invoke wsprintf, Addr szBaseFamilyIDBuffer, Addr sz64bitAsmFormat, qwBaseFamilyID
+        Invoke wsprintf, Addr szModelIDBuffer, Addr sz64bitAsmFormat, qwModelID
+        Invoke wsprintf, Addr szExtModelIDBuffer, Addr sz64bitAsmFormat, qwExtModelID
+        Invoke wsprintf, Addr szBaseModelIDBuffer, Addr sz64bitAsmFormat, qwBaseModelID
+        Invoke wsprintf, Addr szSteppingBuffer, Addr sz64bitAsmFormat, qwStepping
+    
+        Invoke lstrcpy, Addr szSignatureBuffer, Addr szCRLF
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szSigPadding
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szCPUEAX
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szCPUEAXBuffer
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szCRLF
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szSigPadding
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szFamilyID
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szFamilyIDBuffer
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szCRLF
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szSigPadding
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szExtFamilyID
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szExtFamilyIDBuffer
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szCRLF
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szSigPadding
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szBaseFamilyID
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szBaseFamilyIDBuffer
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szCRLF
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szSigPadding
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szModelID
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szModelIDBuffer
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szCRLF
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szSigPadding
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szExtModelID
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szExtModelIDBuffer
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szCRLF
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szSigPadding
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szBaseModelID
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szBaseModelIDBuffer
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szCRLF
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szSigPadding
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szStepping
+        Invoke lstrcat, Addr szSignatureBuffer, Addr szSteppingBuffer
+        ;Invoke lstrcat, Addr szSignatureBuffer, Addr szCRLF
+        
+        Invoke EditShowResult, hEdtTests, Addr szSignatureBuffer
+    .ENDIF
+    
     ;--------------------------------------------------------------------------
     ; String Functions
     ;--------------------------------------------------------------------------
@@ -314,10 +464,10 @@ DoUASM64LibraryTests PROC FRAME hWin:QWORD
     Invoke String_Append, Addr szStringBuffer, Addr szTestCatString2, rax
     Invoke EditShowResultString, hEdtTests, Addr szStringBuffer
     
-    Invoke EditShowFunctionName, hEdtTests, Addr szStringCatStr
+    Invoke EditShowFunctionName, hEdtTests, Addr szStringConcat
     Invoke EditShowString, hEdtTests, Addr szTestCatString1
     Invoke lstrcpy, Addr szStringBuffer, Addr szTestCatString1
-    Invoke String_CatStr, Addr szStringBuffer, Addr szTestCatString2
+    Invoke String_Concat, Addr szStringBuffer, Addr szTestCatString2
     Invoke EditShowResultString, hEdtTests, Addr szStringBuffer
     
     Invoke EditShowFunctionName, hEdtTests, Addr szStringCompare
@@ -435,8 +585,116 @@ DoUASM64LibraryTests PROC FRAME hWin:QWORD
     
     Invoke EditShowFunctionName, hEdtTests, Addr szStringWordReplace
     Invoke EditShowString, hEdtTests, Addr szTestString
-    Invoke String_WordReplace, Addr szTestString, Addr szStringBuffer, Addr szTestReplaceWordStuff, Addr szTestReplaceWordWith
+    Invoke String_WordReplace, Addr szTestString, Addr szStringBuffer, Addr szTestWoking, Addr szTestWorking
     Invoke EditShowResultString, hEdtTests, Addr szStringBuffer
+    
+    ;--------------------------------------------------------------------------
+    ; Memory Functions
+    ;--------------------------------------------------------------------------
+    Invoke EditAppendText, hEdtTests, Addr szSectionMemoryFunctions
+
+    Invoke EditShowFunctionName, hEdtTests, Addr szMemoryAlloc
+    Invoke Memory_Alloc, 100
+    .IF rax != NULL
+        mov pMem, rax
+        Invoke EditShowResult, hEdtTests, Addr szMemoryAllocYes
+    .ELSE
+        Invoke EditShowResult, hEdtTests, Addr szMemoryAllocNo
+    .ENDIF
+
+    Invoke EditShowFunctionName, hEdtTests, Addr szMemoryFree
+    .IF pMem != NULL
+        Invoke Memory_Free, pMem
+        Invoke EditShowResult, hEdtTests, Addr szMemoryFreeYes
+    .ELSE
+        Invoke EditShowResult, hEdtTests, Addr szMemoryFreeNo
+    .ENDIF
+    
+    Invoke EditShowFunctionName, hEdtTests, Addr szMemoryFill
+    Invoke Memory_Alloc, 100
+    .IF rax == 0
+        IFDEF DEBUG64
+        PrintText 'Memory_Alloc failed pMem1'
+        ENDIF
+    .ENDIF
+    mov pMem1, rax
+    Invoke Memory_Alloc, 100
+    .IF rax == 0
+        IFDEF DEBUG64
+        PrintText 'Memory_Alloc failed pMem2'
+        ENDIF
+    .ENDIF
+    mov pMem2, rax
+    Invoke Memory_Fill, pMem1, 100, 0ABCDEF00h
+    .IF pMem1 != 0
+        mov rbx, pMem1
+        mov rax, [rbx]
+        mov qwMemContents1, rax
+    .ENDIF
+    Invoke Memory_Fill, pMem2, 100, 12345678h
+    .IF pMem2 != 0
+        mov rbx, pMem2
+        mov rax, [rbx]
+        mov qwMemContents2, rax
+    .ENDIF
+    Invoke wsprintf, Addr szStringBuffer, Addr sz64bitHexFormat, qwMemContents1
+    Invoke EditShowResultMsg, hEdtTests, Addr szStringBuffer, Addr szpMem1, FALSE
+    Invoke wsprintf, Addr szStringBuffer, Addr sz64bitHexFormat, qwMemContents2
+    Invoke EditShowResultMsg, hEdtTests, Addr szStringBuffer, Addr szpMem2, TRUE
+    .IF pMem1 != NULL
+        Invoke Memory_Free, pMem1
+    .ENDIF
+    .IF pMem2 != NULL
+        Invoke Memory_Free, pMem2
+    .ENDIF
+    
+    Invoke EditShowFunctionName, hEdtTests, Addr szMemoryCopy
+    Invoke Memory_Alloc, 100
+    .IF rax == 0
+        IFDEF DEBUG64
+        PrintText 'Memory_Alloc failed pMem1'
+        ENDIF
+    .ENDIF
+    mov pMem1, rax
+    Invoke Memory_Alloc, 100
+    .IF rax == 0
+        IFDEF DEBUG64
+        PrintText 'Memory_Alloc failed pMem2'
+        ENDIF
+    .ENDIF
+    mov pMem2, rax
+    Invoke Memory_Fill, pMem1, 100, 12345678h
+    .IF pMem1 != 0
+        mov rbx, pMem1
+        mov rax, [rbx]
+        mov qwMemContents1, rax
+    .ENDIF
+    Invoke Memory_Fill, pMem2, 100, 0h
+    .IF pMem2 != 0
+        mov rbx, pMem2
+        mov rax, [rbx]
+        mov qwMemContents2, rax
+    .ENDIF
+    Invoke wsprintf, Addr szStringBuffer, Addr sz64bitHexFormat, qwMemContents1
+    Invoke EditShowResultMsg, hEdtTests, Addr szStringBuffer, Addr szpMem1, FALSE
+    Invoke wsprintf, Addr szStringBuffer, Addr sz64bitHexFormat, qwMemContents2
+    Invoke EditShowResultMsg, hEdtTests, Addr szStringBuffer, Addr szpMem2, FALSE
+    Invoke Memory_Copy, pMem1, pMem2, 100
+    .IF pMem2 != 0
+        mov rbx, pMem2
+        mov rax, [rbx]
+        mov qwMemContents2, rax
+    .ENDIF
+    Invoke wsprintf, Addr szStringBuffer, Addr sz64bitHexFormat, qwMemContents2
+    Invoke EditShowResultMsg, hEdtTests, Addr szStringBuffer, Addr szpMem2AfterCopy, TRUE
+    .IF pMem1 != NULL
+        Invoke Memory_Free, pMem1
+    .ENDIF
+    .IF pMem2 != NULL
+        Invoke Memory_Free, pMem2
+    .ENDIF
+    
+    Invoke EditShowFunctionName, hEdtTests, Addr szMemoryCompare
     
     ret
 DoUASM64LibraryTests ENDP
@@ -458,7 +716,7 @@ EditShowFunctionName ENDP
 ;------------------------------------------------------------------------------
 ; EditShowResult - Append result text to edit control
 ;------------------------------------------------------------------------------
-EditShowResult PROC hEdit:QWORD, lpszResultString:QWORD
+EditShowResult PROC FRAME hEdit:QWORD, lpszResultString:QWORD
     Invoke lstrcpy, Addr szResultDisplayBuffer, Addr szResultPadding
     Invoke lstrcat, Addr szResultDisplayBuffer, Addr szResult
     .IF lpszResultString != 0
@@ -471,9 +729,28 @@ EditShowResult PROC hEdit:QWORD, lpszResultString:QWORD
 EditShowResult ENDP
 
 ;------------------------------------------------------------------------------
+; EditShowResultMsg - Append result text to edit control with a msg
+;------------------------------------------------------------------------------
+EditShowResultMsg PROC FRAME hEdit:QWORD, lpszResultString:QWORD, lpszMsg:QWORD, bCRLF:QWORD
+    Invoke lstrcpy, Addr szResultDisplayBuffer, Addr szResultPadding
+    Invoke lstrcat, Addr szResultDisplayBuffer, Addr szResult
+    Invoke lstrcat, Addr szResultDisplayBuffer, lpszMsg
+    Invoke lstrcat, Addr szResultDisplayBuffer, Addr szColonSpace
+    .IF lpszResultString != 0
+        Invoke lstrcat, Addr szResultDisplayBuffer, lpszResultString
+    .ENDIF
+    Invoke lstrcat, Addr szResultDisplayBuffer, Addr szCRLF
+    .IF bCRLF == TRUE
+        Invoke lstrcat, Addr szResultDisplayBuffer, Addr szCRLF
+    .ENDIF
+    Invoke EditAppendText, hEdit, Addr szResultDisplayBuffer
+    ret
+EditShowResultMsg ENDP
+
+;------------------------------------------------------------------------------
 ; EditShowResult - Append result "string" text to edit control
 ;------------------------------------------------------------------------------
-EditShowResultString PROC hEdit:QWORD, lpszResultString:QWORD
+EditShowResultString PROC FRAME hEdit:QWORD, lpszResultString:QWORD
     Invoke lstrcpy, Addr szResultDisplayBuffer, Addr szResultPadding
     Invoke lstrcat, Addr szResultDisplayBuffer, Addr szResult
     Invoke lstrcat, Addr szResultDisplayBuffer, Addr szStringBegin
@@ -493,7 +770,7 @@ EditShowResultString ENDP
 ;------------------------------------------------------------------------------
 ; EditShowString - Append a "string" to edit control
 ;------------------------------------------------------------------------------
-EditShowString PROC hEdit:QWORD, lpszStringToShow:QWORD
+EditShowString PROC FRAME hEdit:QWORD, lpszStringToShow:QWORD
     Invoke lstrcpy, Addr szTestStringBuffer, Addr szResultPadding
     Invoke lstrcat, Addr szTestStringBuffer, Addr szString
     .IF lpszStringToShow != 0

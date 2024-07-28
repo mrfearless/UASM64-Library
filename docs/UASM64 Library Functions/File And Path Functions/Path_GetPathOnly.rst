@@ -1,11 +1,11 @@
 .. _Path_GetPathOnly:
 
-===================================
-Path_GetPathOnly 
-===================================
+================
+Path_GetPathOnly
+================
 
 Reads the path of a complete full filename and path and returns just the path portion in the destination buffer.
-    
+
 ::
 
    Path_GetPathOnly PROTO lpszFullFilenamePath:QWORD, lpszPath:QWORD
@@ -14,6 +14,7 @@ Reads the path of a complete full filename and path and returns just the path po
 **Parameters**
 
 * ``lpszFullFilenamePath`` - Address of zero terminated that contains the full filename and path.
+
 * ``lpszPath`` - Address of buffer to receive the path portion of a complete path.
 
 
@@ -21,17 +22,12 @@ Reads the path of a complete full filename and path and returns just the path po
 
 No return value.
 
+
 **Notes**
 
 The destination buffer must be large enough to receive the path from the complete full filename and path.
 
-**Example**
-
-::
-
-   Invoke Path_GetPathOnly
 
 **See Also**
 
-:ref:`Path_GetAppPath<Path_GetAppPath>`, :ref:`Path_NameFromPath<Path_NameFromPath>` 
-
+:ref:`Path_GetAppPath<Path_GetAppPath>`, :ref:`Path_NameFromPath<Path_NameFromPath>`

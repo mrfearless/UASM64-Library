@@ -14,49 +14,201 @@ String Functions
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
 | **Function**                                         | **Description**                                                                                                                    |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_Append<String_Append>`                  | Appends a zero terminated string to the end of an existing zero terminated string.                                                 |
+| :ref:`String_AppendA<String_AppendA>`                | Appends a zero terminated string to the end of an existing zero terminated string.                                                 |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_CatStr<String_CatStr>`                  | Concatenate two strings by appending the second zero terminated string to the end of the first zero terminated string.             |
+| :ref:`String_AppendW<String_AppendW>`                | Appends a zero terminated string to the end of an existing zero terminated string.                                                 |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_Compare<String_Compare>`                | A case sensitive string comparison that compares two zero terminated strings for a difference.                                     |
+| :ref:`String_CompareA<String_CompareA>`              | A case sensitive string comparison that compares two zero terminated strings for a difference.                                     |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_CompareI<String_CompareI>`              | A case insensitive string comparison that compares two zero terminated strings for a difference.                                   |
+| :ref:`String_CompareW<String_CompareW>`              | A case sensitive string comparison that compares two zero terminated strings for a difference.                                     |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_CompareIEx<String_CompareIEx>`          | A case insensitive string comparison that compares two zero terminated strings for a difference.                                   |
+| :ref:`String_CompareIA<String_CompareIA>`            | A case insensitive string comparison that compares two zero terminated strings for a difference.                                   |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_Copy<String_Copy>`                      | Copies a zero terminated string from the source buffer to the destination buffer.                                                  |
+| :ref:`String_CompareIW<String_CompareIW>`            | A case insensitive string comparison that compares two zero terminated strings for a difference.                                   |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_Count<String_Count>`                    | Count the number of instances of a specified substring in a zero terminated string.                                                |
+| :ref:`String_CompareIExA<String_CompareIExA>`        | A case insensitive string comparison that compares two zero terminated strings for a difference.                                   |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_InString<String_InString>`              | Find a substring in a zero terminated source string.                                                                               |
+| :ref:`String_CompareIExW<String_CompareIExW>`        | A case insensitive string comparison that compares two zero terminated strings for a difference.                                   |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_Left<String_Left>`                      | Gets a substring from the left side of a zero terminated string.                                                                   |
+| :ref:`String_ConcatA<String_ConcatA>`                | Concatenate two strings by appending the second zero terminated string to the end of the first zero terminated string.             |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_LeftTrim<String_LeftTrim>`              | Trims the leading spaces and tabs from a zero terminated string and places the results in the destination buffer provided.         |
+| :ref:`String_ConcatW<String_ConcatW>`                | Concatenate two strings by appending the second zero terminated string to the end of the first zero terminated string.             |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_Length<String_Length>`                  | Reads the length of a zero terminated string and returns its length in ``RAX``.                                                    |
+| :ref:`String_CopyA<String_CopyA>`                    | Copies a zero terminated string from the source buffer to the destination buffer.                                                  |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_Lowercase<String_Lowercase>`            | Converts any uppercase characters in the supplied zero terminated string to lowercase.                                             |
+| :ref:`String_CopyW<String_CopyW>`                    | Copies a zero terminated string from the source buffer to the destination buffer.                                                  |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_Middle<String_Middle>`                  | Gets a substring from the middle of a zero terminated string.                                                                      |
+| :ref:`String_CountA<String_CountA>`                  | Count the number of instances of a specified substring in a zero terminated string.                                                |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_MonoSpace<String_MonoSpace>`            | Format a string with single spaces and trimmed ends.                                                                               |
+| :ref:`String_CountW<String_CountW>`                  | Count the number of instances of a specified substring in a zero terminated string.                                                |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_MultiCat<String_MultiCat>`              | Concatenate multiple strings.                                                                                                      |
+| :ref:`String_InStringA<String_InStringA>`            | Find a substring in a zero terminated source string.                                                                               |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_Remove<String_Remove>`                  | Removes a substring from a zero terminated source string and writes the result in the destination string address.                  |
+| :ref:`String_InStringW<String_InStringW>`            | Find a substring in a zero terminated source string.                                                                               |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_Replace<String_Replace>`                | Replaces text in a zero terminated string.                                                                                         |
+| :ref:`String_LeftA<String_LeftA>`                    | Gets a substring from the left side of a zero terminated string.                                                                   |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_Reverse<String_Reverse>`                | Reverses a zero terminated string in lpszSource and places it in the string buffer pointed to by the lpszDestination parameter.    |
+| :ref:`String_LeftW<String_LeftW>`                    | Gets a substring from the left side of a zero terminated string.                                                                   |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_Right<String_Right>`                    | Gets a substring from the right side of a zero terminated string.                                                                  |
+| :ref:`String_LeftTrimA<String_LeftTrimA>`            | Trims the leading spaces and tabs from a zero terminated string.                                                                   |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_RightTrim<String_RightTrim>`            | Trims the trailing spaces and tabs from a zero terminated string and places the results in the destination buffer provided.        |
+| :ref:`String_LeftTrimW<String_LeftTrimW>`            | Trims the leading spaces and tabs from a zero terminated string.                                                                   |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_Trim<String_Trim>`                      | Trims the leading and trailing spaces and tabs from a zero terminated string.                                                      |
+| :ref:`String_LengthA<String_LengthA>`                | Reads the length of a zero terminated string.                                                                                      |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_Uppercase<String_Uppercase>`            | Converts any lowercase characters in the supplied zero terminated string to uppercase.                                             |
+| :ref:`String_LengthW<String_LengthW>`                | Reads the length of a zero terminated string.                                                                                      |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
-| :ref:`String_WordReplace<String_WordReplace>`        | Globally replace whole words in the source text and write the result to the destination.                                           |
+| :ref:`String_LowercaseA<String_LowercaseA>`          | Converts any uppercase characters in the supplied zero terminated string to lowercase.                                             |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_LowercaseW<String_LowercaseW>`          | Converts any uppercase characters in the supplied zero terminated string to lowercase.                                             |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_MiddleA<String_MiddleA>`                | Gets a substring from the middle of a zero terminated string.                                                                      |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_MiddleW<String_MiddleW>`                | Gets a substring from the middle of a zero terminated string.                                                                      |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_MonoSpaceA<String_MonoSpaceA>`          | Format a string with single spaces and trimmed ends.                                                                               |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_MonoSpaceW<String_MonoSpaceW>`          | Format a string with single spaces and trimmed ends.                                                                               |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_MultiCatA<String_MultiCatA>`            | Concatenate multiple strings.                                                                                                      |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_MultiCatW<String_MultiCatW>`            | Concatenate multiple strings.                                                                                                      |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_RemoveA<String_RemoveA>`                | Removes a substring from a zero terminated source string.                                                                          |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_RemoveW<String_RemoveW>`                | Removes a substring from a zero terminated source string.                                                                          |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_ReplaceA<String_ReplaceA>`              | Replaces text in a zero terminated string.                                                                                         |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_ReplaceW<String_ReplaceW>`              | Replaces text in a zero terminated string.                                                                                         |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_ReverseA<String_ReverseA>`              | Reverses a zero terminated string.                                                                                                 |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_ReverseW<String_ReverseW>`              | Reverses a zero terminated string.                                                                                                 |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_RightA<String_RightA>`                  | Gets a substring from the right side of a zero terminated string.                                                                  |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_RightW<String_RightW>`                  | Gets a substring from the right side of a zero terminated string.                                                                  |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_RightTrimA<String_RightTrimA>`          | Trims the trailing spaces and tabs from a zero terminated string.                                                                  |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_RightTrimW<String_RightTrimW>`          | Trims the trailing spaces and tabs from a zero terminated string.                                                                  |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_SubstringA<String_SubstringA>`          | Find a substring in a zero terminated source string.                                                                               |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_SubstringW<String_SubstringW>`          | Find a substring in a zero terminated source string.                                                                               |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_TrimA<String_TrimA>`                    | Trims the leading and trailing spaces and tabs from a zero terminated string.                                                      |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_TrimW<String_TrimW>`                    | Trims the leading and trailing spaces and tabs from a zero terminated string.                                                      |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_UppercaseA<String_UppercaseA>`          | Converts any lowercase characters in the supplied zero terminated string to uppercase.                                             |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_UppercaseW<String_UppercaseW>`          | Converts any lowercase characters in the supplied zero terminated string to uppercase.                                             |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_WordReplaceA<String_WordReplaceA>`      | Globally replace whole words in the source text and write the result to the destination.                                           |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_WordReplaceW<String_WordReplaceW>`      | Globally replace whole words in the source text and write the result to the destination.                                           |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| **ANSI String Function**                             | **Description**                                                                                                                    |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_AppendA<String_AppendA>`                | Appends a zero terminated string to the end of an existing zero terminated string.                                                 |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_CompareA<String_CompareA>`              | A case sensitive string comparison that compares two zero terminated strings for a difference.                                     |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_CompareIA<String_CompareIA>`            | A case insensitive string comparison that compares two zero terminated strings for a difference.                                   |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_CompareIExA<String_CompareIExA>`        | A case insensitive string comparison that compares two zero terminated strings for a difference.                                   |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_ConcatA<String_ConcatA>`                | Concatenate two strings by appending the second zero terminated string to the end of the first zero terminated string.             |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_CopyA<String_CopyA>`                    | Copies a zero terminated string from the source buffer to the destination buffer.                                                  |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_CountA<String_CountA>`                  | Count the number of instances of a specified substring in a zero terminated string.                                                |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_InStringA<String_InStringA>`            | Find a substring in a zero terminated source string.                                                                               |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_LeftA<String_LeftA>`                    | Gets a substring from the left side of a zero terminated string.                                                                   |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_LeftTrimA<String_LeftTrimA>`            | Trims the leading spaces and tabs from a zero terminated string.                                                                   |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_LowercaseA<String_LowercaseA>`          | Converts any uppercase characters in the supplied zero terminated string to lowercase.                                             |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_MiddleA<String_MiddleA>`                | Gets a substring from the middle of a zero terminated string.                                                                      |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_MonoSpaceA<String_MonoSpaceA>`          | Format a string with single spaces and trimmed ends.                                                                               |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_MultiCatA<String_MultiCatA>`            | Concatenate multiple strings.                                                                                                      |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_RemoveA<String_RemoveA>`                | Removes a substring from a zero terminated source string.                                                                          |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_ReplaceA<String_ReplaceA>`              | Replaces text in a zero terminated string.                                                                                         |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_ReverseA<String_ReverseA>`              | Reverses a zero terminated string.                                                                                                 |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_RightA<String_RightA>`                  | Gets a substring from the right side of a zero terminated string.                                                                  |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_RightTrimA<String_RightTrimA>`          | Trims the trailing spaces and tabs from a zero terminated string.                                                                  |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_SubstringA<String_SubstringA>`          | Find a substring in a zero terminated source string.                                                                               |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_TrimA<String_TrimA>`                    | Trims the leading and trailing spaces and tabs from a zero terminated string.                                                      |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_UppercaseA<String_UppercaseA>`          | Converts any lowercase characters in the supplied zero terminated string to uppercase.                                             |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_WordReplaceA<String_WordReplaceA>`      | Globally replace whole words in the source text and write the result to the destination.                                           |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| **UNICODE String Function**                          | **Description**                                                                                                                    |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_AppendW<String_AppendA>`                | Appends a zero terminated string to the end of an existing zero terminated string.                                                 |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_CompareW<String_CompareW>`              | A case sensitive string comparison that compares two zero terminated strings for a difference.                                     |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_CompareIW<String_CompareIW>`            | A case insensitive string comparison that compares two zero terminated strings for a difference.                                   |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_CompareIExW<String_CompareIExW>`        | A case insensitive string comparison that compares two zero terminated strings for a difference.                                   |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_ConcatW<String_ConcatW>`                | Concatenate two strings by appending the second zero terminated string to the end of the first zero terminated string.             |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_CopyW<String_CopyW>`                    | Copies a zero terminated string from the source buffer to the destination buffer.                                                  |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_CountW<String_CountW>`                  | Count the number of instances of a specified substring in a zero terminated string.                                                |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_InStringW<String_InStringW>`            | Find a substring in a zero terminated source string.                                                                               |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_LeftW<String_LeftW>`                    | Gets a substring from the left side of a zero terminated string.                                                                   |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_LeftTrimW<String_LeftTrimW>`            | Trims the leading spaces and tabs from a zero terminated string.                                                                   |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_LowercaseW<String_LowercaseW>`          | Converts any uppercase characters in the supplied zero terminated string to lowercase.                                             |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_MiddleW<String_MiddleW>`                | Gets a substring from the middle of a zero terminated string.                                                                      |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_MonoSpaceW<String_MonoSpaceW>`          | Format a string with single spaces and trimmed ends.                                                                               |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_MultiCatW<String_MultiCatW>`            | Concatenate multiple strings.                                                                                                      |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_RemoveW<String_RemoveW>`                | Removes a substring from a zero terminated source string.                                                                          |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_ReplaceW<String_ReplaceW>`              | Replaces text in a zero terminated string.                                                                                         |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_ReverseW<String_ReverseW>`              | Reverses a zero terminated string.                                                                                                 |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_RightW<String_RightW>`                  | Gets a substring from the right side of a zero terminated string.                                                                  |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_RightTrimW<String_RightTrimW>`          | Trims the trailing spaces and tabs from a zero terminated string.                                                                  |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_SubstringW<String_SubstringW>`          | Find a substring in a zero terminated source string.                                                                               |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_TrimW<String_TrimW>`                    | Trims the leading and trailing spaces and tabs from a zero terminated string.                                                      |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_UppercaseW<String_UppercaseW>`          | Converts any lowercase characters in the supplied zero terminated string to uppercase.                                             |
++------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+
+| :ref:`String_WordReplaceW<String_WordReplaceW>`      | Globally replace whole words in the source text and write the result to the destination.                                           |
 +------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+

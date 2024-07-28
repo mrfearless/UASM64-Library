@@ -1,6 +1,7 @@
 docs/build*/
 *.chm
 package_releases.bat
+gendocs.bat
 *.old
 *.obj
 *.used

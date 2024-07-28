@@ -11,14 +11,10 @@
 .x64
 
 option casemap : none
+IF @Platform EQ 1
 option win64 : 11
+ENDIF
 option frame : auto
-option stackbase : rsp
-
-_WIN64 EQU 1
-WINVER equ 0501h
-
-include windows.inc
 
 include UASM64.inc
 
@@ -47,6 +43,10 @@ UASM64_ALIGN
 ; filename. For safety reasons if dealing with both long path and file name, 
 ; the buffer can be made the same length as the source buffer. 
 ;
+; See Also:
+;
+; Path_GetAppPath, Path_GetPathOnly
+; 
 ;------------------------------------------------------------------------------
 Path_NameFromPath PROC FRAME USES RCX RDX RDI RSI lpszFullFilenamePath:QWORD, lpszFilename:QWORD
 

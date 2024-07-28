@@ -11,14 +11,10 @@
 .x64
 
 option casemap : none
+IF @Platform EQ 1
 option win64 : 11
+ENDIF
 option frame : auto
-option stackbase : rsp
-
-_WIN64 EQU 1
-WINVER equ 0501h
-
-include windows.inc
 
 include UASM64.inc
 
@@ -33,11 +29,19 @@ UASM64_ALIGN
 ; 
 ; Parameters:
 ; 
-; No Parameters.
+; There are no parameters.
 ; 
 ; Returns:
 ; 
 ; TRUE if AES-NI instructions are supported, or FALSE otherwise.
+;
+; Notes:
+;
+; https://en.wikipedia.org/wiki/AES_instruction_set
+;
+; See Also:
+;
+; CPU_CPUID_Supported, CPU_AVX_Supported
 ; 
 ;------------------------------------------------------------------------------
 CPU_AESNI_Supported PROC FRAME USES RBX RCX RDX

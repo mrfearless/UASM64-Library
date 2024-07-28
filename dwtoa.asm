@@ -11,12 +11,11 @@
 .x64
 
 option casemap : none
+IF @Platform EQ 1
 option win64 : 11
+ENDIF
 option frame : auto
-option stackbase : rsp
 
-_WIN64 EQU 1
-WINVER equ 0501h
 
 .code
 
