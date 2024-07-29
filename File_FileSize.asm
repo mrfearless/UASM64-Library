@@ -28,13 +28,13 @@ IF @Platform EQ 3 ; Linux x64
         st_ino          QWORD ? ;   linux_uword_t 
         st_nlink        QWORD ? ;   linux_uword_t 
         st_mode         DWORD ? ;   unsigned int 
-        st_uid          DWORD ? ; 	unsigned int 
-        st_gid          DWORD ? ; 	unsigned int 
-        _pad0           DWORD ? ;  	unsigned int 
+        st_uid          DWORD ? ;   unsigned int 
+        st_gid          DWORD ? ;   unsigned int 
+        _pad0           DWORD ? ;   unsigned int 
         st_rdev         QWORD ? ;   linux_uword_t 
         st_size         QWORD ? ;   linux_word_t 
-        st_blksize      QWORD ? ; 	linux_word_t 
-        st_blocks       QWORD ? ;  	linux_word_t 
+        st_blksize      QWORD ? ;   linux_word_t 
+        st_blocks       QWORD ? ;   linux_word_t 
         st_atime        QWORD ? ;   linux_uword_t 
         st_atime_nsec   QWORD ? ;   linux_uword_t 
         st_mtime        QWORD ? ;   linux_uword_t 

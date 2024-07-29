@@ -56,9 +56,9 @@ CPU_Highest_Extended PROC FRAME USES RBX RCX RDX
         xor rcx, rcx
         xor rdx, rdx
         
-    	mov eax, 080000000h
-    	cpuid
-    	mov CPU_HIGHEST_EXTENDED_LEVEL, rax
+        mov eax, 080000000h
+        cpuid
+        mov CPU_HIGHEST_EXTENDED_LEVEL, rax
     .ELSE
         ; save result so we dont have to keep doing cpuid call
         mov rax, CPU_HIGHEST_EXTENDED_LEVEL

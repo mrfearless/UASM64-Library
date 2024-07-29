@@ -52,9 +52,9 @@ UASM64_ALIGN
 ; Returns:
 ; 
 ; There are three (3) possible return values:
-; 	1 = successful operation
-; 	2 = no argument exists at specified arg number
-; 	3 = non matching quotation marks
+;   1 = successful operation
+;   2 = no argument exists at specified arg number
+;   3 = non matching quotation marks
 ; 
 ; See Also:
 ;
@@ -113,9 +113,9 @@ UASM64_ALIGN
 ; Returns:
 ; 
 ; There are three (3) possible return values:
-; 	1 = successful operation
-; 	2 = no argument exists at specified arg number
-; 	3 = non matching quotation marks
+;   1 = successful operation
+;   2 = no argument exists at specified arg number
+;   3 = non matching quotation marks
 ; 
 ; See Also:
 ;

@@ -60,11 +60,11 @@ CPU_Logical_Cores PROC FRAME USES RBX RCX RDX
     xor rcx, rcx
     xor rdx, rdx
     
-	mov eax, 1
-	cpuid
-	and ebx, 00FF0000h
-	mov eax, ebx
-	shr eax, 16
+    mov eax, 1
+    cpuid
+    and ebx, 00FF0000h
+    mov eax, ebx
+    shr eax, 16
     
     jmp CPU_Logical_Cores_Exit
     

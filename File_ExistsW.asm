@@ -33,27 +33,27 @@ IF @Platform EQ 1 ; Win x64
     ENDIF
     
     IFNDEF FILETIME
-    FILETIME	        STRUCT
-        dwLowDateTime	DWORD ?
-        dwHighDateTime	DWORD ?
-    FILETIME	        ENDS
+    FILETIME            STRUCT
+        dwLowDateTime   DWORD ?
+        dwHighDateTime  DWORD ?
+    FILETIME            ENDS
     ENDIF
     
     IFNDEF WIN32_FIND_DATAW
     WIN32_FIND_DATAW        STRUCT 8
-        dwFileAttributes	DWORD ?
-        ftCreationTime	    FILETIME <>
-        ftLastAccessTime	FILETIME <>
-        ftLastWriteTime	    FILETIME <>
-        nFileSizeHigh	    DWORD ?
-        nFileSizeLow	    DWORD ?
-        dwReserved0	        DWORD ?
-        dwReserved1	        DWORD ?
-        cFileName	        WCHAR MAX_PATH DUP (?)
-        cAlternateFileName	WCHAR 14 DUP (?)
-        dwFileType	        DWORD ? ; Obsolete. Do not use.
-        dwCreatorType	    DWORD ? ; Obsolete. Do not use.
-        wFinderFlags	    WORD ? ; Obsolete. Do not use.
+        dwFileAttributes    DWORD ?
+        ftCreationTime      FILETIME <>
+        ftLastAccessTime    FILETIME <>
+        ftLastWriteTime     FILETIME <>
+        nFileSizeHigh       DWORD ?
+        nFileSizeLow        DWORD ?
+        dwReserved0         DWORD ?
+        dwReserved1         DWORD ?
+        cFileName           WCHAR MAX_PATH DUP (?)
+        cAlternateFileName  WCHAR 14 DUP (?)
+        dwFileType          DWORD ? ; Obsolete. Do not use.
+        dwCreatorType       DWORD ? ; Obsolete. Do not use.
+        wFinderFlags        WORD ? ; Obsolete. Do not use.
     WIN32_FIND_DATAW        ENDS
     ENDIF
     

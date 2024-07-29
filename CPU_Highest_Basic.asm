@@ -55,9 +55,9 @@ CPU_Highest_Basic PROC FRAME USES RBX RCX RDX
         xor rcx, rcx
         xor rdx, rdx
         
-    	mov eax, 0
-    	cpuid
-    	mov CPU_HIGHEST_BASIC_LEVEL, rax
+        mov eax, 0
+        cpuid
+        mov CPU_HIGHEST_BASIC_LEVEL, rax
     .ELSE
         ; save result so we dont have to keep doing cpuid call
         mov rax, CPU_HIGHEST_BASIC_LEVEL

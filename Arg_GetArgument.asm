@@ -72,8 +72,8 @@ UASM64_ALIGN
 ; greater than zero.
 ;
 ; The three possible return values are:
-;	> 1 = The next read offset in the source.
-;	0   = The end of the argument list has been reached.
+;   > 1 = The next read offset in the source.
+;   0   = The end of the argument list has been reached.
 ;   -1  = A non matching quotation error has occurred in the source.
 ; 
 ; Notes:

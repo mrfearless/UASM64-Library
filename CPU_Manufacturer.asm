@@ -38,6 +38,10 @@ UASM64_ALIGN
 ; RAX contains a pointer to a string containing the CPU manufacturer or 0 if 
 ; not supported.
 ;
+; See Also:
+;
+; CPU_ManufacturerID, CPU_Brand
+; 
 ;------------------------------------------------------------------------------
 CPU_Manufacturer PROC FRAME USES RBX RCX RDX RDI
 

@@ -55,11 +55,11 @@ CPU_RDSEED_Supported PROC FRAME USES RBX RCX RDX
     xor rcx, rcx
     xor rdx, rdx
     
-	mov eax, 7
-	cpuid
-	shr ebx, 18
-	and ebx, 1
-	mov eax, ebx
+    mov eax, 7
+    cpuid
+    shr ebx, 18
+    and ebx, 1
+    mov eax, ebx
     
     jmp CPU_RDSEED_Supported_Exit
     

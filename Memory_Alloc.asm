@@ -19,10 +19,10 @@ option frame : auto
 IF @Platform EQ 1 ; Win x64
     GlobalAlloc PROTO uFlags:DWORD, dwBytes:QWORD
     IFNDEF GMEM_FIXED
-    GMEM_FIXED EQU	0000h
+    GMEM_FIXED EQU  0000h
     ENDIF
     IFNDEF GMEM_ZEROINIT
-    GMEM_ZEROINIT EQU	0040h
+    GMEM_ZEROINIT EQU   0040h
     ENDIF
     includelib kernel32.lib
 ENDIF

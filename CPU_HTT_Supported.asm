@@ -55,11 +55,11 @@ CPU_HTT_Supported PROC FRAME USES RBX RCX RDX
     xor rcx, rcx
     xor rdx, rdx
     
-	mov eax, 1
-	cpuid
-	shr edx, 28
-	and edx, 1
-	mov eax, edx
+    mov eax, 1
+    cpuid
+    shr edx, 28
+    and edx, 1
+    mov eax, edx
     
     jmp CPU_HTT_Supported_Exit
     

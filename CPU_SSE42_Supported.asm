@@ -56,11 +56,11 @@ CPU_SSE42_Supported PROC FRAME USES RBX RCX RDX
     xor rcx, rcx
     xor rdx, rdx
     
-	mov eax, 1
-	cpuid
-	shr ecx, 20
-	and ecx, 1
-	mov eax, ecx
+    mov eax, 1
+    cpuid
+    shr ecx, 20
+    and ecx, 1
+    mov eax, ecx
     
     jmp CPU_SSE42_Supported_Exit
     

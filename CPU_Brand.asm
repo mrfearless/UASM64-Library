@@ -25,7 +25,7 @@ option frame : auto
 ;    DEBUGEXE textequ <'\UASM\bin\DbgWin.exe'>
 ;    include \UASM\include\debug64.inc
 ;    .DATA
-;    RDBG_DbgWin	DB DEBUGEXE,0
+;    RDBG_DbgWin    DB DEBUGEXE,0
 ;    .CODE
 ;ENDIF
 

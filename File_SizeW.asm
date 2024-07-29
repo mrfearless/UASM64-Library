@@ -33,27 +33,27 @@ IF @Platform EQ 1 ; Win x64
     ENDIF
     
     IFNDEF FILETIME
-    FILETIME	        STRUCT
-        dwLowDateTime	DWORD ?
-        dwHighDateTime	DWORD ?
-    FILETIME	        ENDS
+    FILETIME            STRUCT
+        dwLowDateTime   DWORD ?
+        dwHighDateTime  DWORD ?
+    FILETIME            ENDS
     ENDIF
     
     IFNDEF WIN32_FIND_DATAW
     WIN32_FIND_DATAW        STRUCT 8
-        dwFileAttributes	DWORD ?
-        ftCreationTime	    FILETIME <>
-        ftLastAccessTime	FILETIME <>
-        ftLastWriteTime	    FILETIME <>
-        nFileSizeHigh	    DWORD ?
-        nFileSizeLow	    DWORD ?
-        dwReserved0	        DWORD ?
-        dwReserved1	        DWORD ?
-        cFileName	        WCHAR MAX_PATH DUP (?)
-        cAlternateFileName	WCHAR 14 DUP (?)
-        dwFileType	        DWORD ? ; Obsolete. Do not use.
-        dwCreatorType	    DWORD ? ; Obsolete. Do not use.
-        wFinderFlags	    WORD ? ; Obsolete. Do not use.
+        dwFileAttributes    DWORD ?
+        ftCreationTime      FILETIME <>
+        ftLastAccessTime    FILETIME <>
+        ftLastWriteTime     FILETIME <>
+        nFileSizeHigh       DWORD ?
+        nFileSizeLow        DWORD ?
+        dwReserved0         DWORD ?
+        dwReserved1         DWORD ?
+        cFileName           WCHAR MAX_PATH DUP (?)
+        cAlternateFileName  WCHAR 14 DUP (?)
+        dwFileType          DWORD ? ; Obsolete. Do not use.
+        dwCreatorType       DWORD ? ; Obsolete. Do not use.
+        wFinderFlags        WORD ? ; Obsolete. Do not use.
     WIN32_FIND_DATAW        ENDS
     ENDIF
     
@@ -67,13 +67,13 @@ IF @Platform EQ 3 ; Linux x64
         st_ino          QWORD ? ;   linux_uword_t 
         st_nlink        QWORD ? ;   linux_uword_t 
         st_mode         DWORD ? ;   unsigned int 
-        st_uid          DWORD ? ; 	unsigned int 
-        st_gid          DWORD ? ; 	unsigned int 
-        _pad0           DWORD ? ;  	unsigned int 
+        st_uid          DWORD ? ;   unsigned int 
+        st_gid          DWORD ? ;   unsigned int 
+        _pad0           DWORD ? ;   unsigned int 
         st_rdev         QWORD ? ;   linux_uword_t 
         st_size         QWORD ? ;   linux_word_t 
-        st_blksize      QWORD ? ; 	linux_word_t 
-        st_blocks       QWORD ? ;  	linux_word_t 
+        st_blksize      QWORD ? ;   linux_word_t 
+        st_blocks       QWORD ? ;   linux_word_t 
         st_atime        QWORD ? ;   linux_uword_t 
         st_atime_nsec   QWORD ? ;   linux_uword_t 
         st_mtime        QWORD ? ;   linux_uword_t 

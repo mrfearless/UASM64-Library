@@ -56,11 +56,11 @@ CPU_SSE2_Supported PROC FRAME USES RBX RCX RDX
     xor rcx, rcx
     xor rdx, rdx
     
-	mov eax, 1
-	cpuid
-	shr edx, 26
-	and edx, 1
-	mov eax, edx
+    mov eax, 1
+    cpuid
+    shr edx, 26
+    and edx, 1
+    mov eax, edx
     
     jmp CPU_SSE2_Supported_Exit
     

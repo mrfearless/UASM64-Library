@@ -56,11 +56,11 @@ CPU_SSE41_Supported PROC FRAME USES RBX RCX RDX
     xor rcx, rcx
     xor rdx, rdx
     
-	mov eax, 1
-	cpuid
-	shr ecx, 19
-	and ecx, 1
-	mov eax, ecx
+    mov eax, 1
+    cpuid
+    shr ecx, 19
+    and ecx, 1
+    mov eax, ecx
     
     jmp CPU_SSE41_Supported_Exit
     

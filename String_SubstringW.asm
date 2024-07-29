@@ -51,45 +51,45 @@ String_SubstringW PROC FRAME USES RBX RCX RDX RDI RSI R8 lpszString:QWORD, lpszS
 
     mov rdi, lpszString
     mov rsi, lpszSubString
-	xor rbx, rbx		; set an index to 0
-	jmp String_SubstringA_Loop ; goto '.LOOP'
+    xor rbx, rbx        ; set an index to 0
+    jmp String_SubstringA_Loop ; goto '.LOOP'
 
 String_SubstringA_inc:
-	inc rbx			    ; rbx index incrementation
-	inc rbx			    ; rbx index incrementation
+    inc rbx             ; rbx index incrementation
+    inc rbx             ; rbx index incrementation
 
 String_SubstringA_Loop:
-	mov r8, rbx		    ; index copy into r8
-	xor rcx, rcx		; set rcx index to 0
-	jmp String_SubstringA_sub_loop; goto '.SUB_LOOP'
+    mov r8, rbx         ; index copy into r8
+    xor rcx, rcx        ; set rcx index to 0
+    jmp String_SubstringA_sub_loop; goto '.SUB_LOOP'
 
 String_SubstringA_inc_sub:
-	inc r8			    ; r8 incrementation
-	inc r8			    ; r8 incrementation
-	inc rcx			    ; rcx index incrementation
-	inc rcx			    ; rcx index incrementation
+    inc r8              ; r8 incrementation
+    inc r8              ; r8 incrementation
+    inc rcx             ; rcx index incrementation
+    inc rcx             ; rcx index incrementation
 
 String_SubstringA_sub_loop:
-	mov dx, WORD PTR [rsi+rcx]; put str2[rcx] into dl
-	cmp dx, 0		    ; is dl equal to 0 ?
-	je String_SubstringA_ret_non_null; if yes, goto '.RET_NON_NULL'
-	mov ax, WORD PTR [rdi+r8]; put str1[r8] into al
-	cmp ax, 0		    ; is al equal to 0 ?
-	je String_SubstringA_ret_null; if yes, goto '.RET_NULL'
-	cmp ax, dx		    ; is al equal to dl ?
-	je String_SubstringA_inc_sub; if yes, goto '.INC_SUB'
-	jmp String_SubstringA_inc ; goto '.INCREMENT'
+    mov dx, WORD PTR [rsi+rcx]; put str2[rcx] into dl
+    cmp dx, 0           ; is dl equal to 0 ?
+    je String_SubstringA_ret_non_null; if yes, goto '.RET_NON_NULL'
+    mov ax, WORD PTR [rdi+r8]; put str1[r8] into al
+    cmp ax, 0           ; is al equal to 0 ?
+    je String_SubstringA_ret_null; if yes, goto '.RET_NULL'
+    cmp ax, dx          ; is al equal to dl ?
+    je String_SubstringA_inc_sub; if yes, goto '.INC_SUB'
+    jmp String_SubstringA_inc ; goto '.INCREMENT'
 
 String_SubstringA_ret_null:
-	xor rax, rax		; set return value to NULL
-	jmp String_SubstringA_end; goto '.END'
+    xor rax, rax        ; set return value to NULL
+    jmp String_SubstringA_end; goto '.END'
 
 String_SubstringA_ret_non_null:
-	mov rax, rdi		; set return value to rdi
-	add rax, rbx		; add index to return value
+    mov rax, rdi        ; set return value to rdi
+    add rax, rbx        ; add index to return value
 
 String_SubstringA_end:
-	ret			        ; end
+    ret                 ; end
 
 String_SubstringW ENDP
 

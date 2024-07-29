@@ -55,11 +55,11 @@ CPU_AVX2_Supported PROC FRAME USES RBX RCX RDX
     xor rcx, rcx
     xor rdx, rdx
     
-	mov eax, 7
-	cpuid
-	shr ebx, 5
-	and ebx, 1
-	mov eax, ebx
+    mov eax, 7
+    cpuid
+    shr ebx, 5
+    and ebx, 1
+    mov eax, ebx
     
     jmp CPU_AVX2_Supported_Exit
     

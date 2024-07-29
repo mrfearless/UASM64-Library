@@ -51,6 +51,10 @@ UASM64_ALIGN
 ;
 ; The parameters passed can be NULL if you do not require that particular info
 ; returned. 
+;
+; See Also:
+;
+; CPU_Brand, CPU_Manufacturer, CPU_ManufacturerID
 ; 
 ;------------------------------------------------------------------------------
 CPU_Signature PROC FRAME USES RBX lpqwFamilyID:QWORD, lpqwExtFamilyID:QWORD, lpqwBaseFamilyID:QWORD, lpqwModelID:QWORD, lpqwExtModelID:QWORD, lpqwBaseModelID:QWORD, lpqwStepping:QWORD 
