@@ -36,7 +36,6 @@
 
 ;==============================================================================
 
-UASM64_ALIGN            TEXTEQU <ALIGN 16>
 
 ;------------------------------------------------------------------------------
 ; UASM64 Prototypes
@@ -214,9 +213,24 @@ Path_GetPathOnly        PROTO lpszFullFilenamePath:QWORD, lpszPath:QWORD
 Path_NameFromPath       PROTO lpszFullFilenamePath:QWORD, lpszFilename:QWORD
 
 ; Argument Parsing Functions:
-Arg_GetArgument         PROTO lpszArgumentList:QWORD, lpszDestination:QWORD, nArgument:QWORD, qwArgumentListReadOffset:QWORD
-Arg_GetCommandLine      PROTO nArgument:QWORD, lpszArgumentBuffer:QWORD
-Arg_GetCommandLineEx    PROTO nArgument:QWORD, lpszArgumentBuffer:QWORD
+Arg_GetArgumentA        PROTO lpszArgumentList:QWORD, lpszDestination:QWORD, nArgument:QWORD, qwArgumentListReadOffset:QWORD
+Arg_GetCommandLineA     PROTO nArgument:QWORD, lpszArgumentBuffer:QWORD
+Arg_GetCommandLineExA   PROTO nArgument:QWORD, lpszArgumentBuffer:QWORD
+
+Arg_GetArgumentW        PROTO lpszArgumentList:QWORD, lpszDestination:QWORD, nArgument:QWORD, qwNotUsed:QWORD
+Arg_GetCommandLineW     PROTO nArgument:QWORD, lpszArgumentBuffer:QWORD
+Arg_GetCommandLineExW   PROTO nArgument:QWORD, lpszArgumentBuffer:QWORD
+
+IFDEF __UNICODE__
+    Arg_GetArgument             EQU <Arg_GetArgumentW>
+    Arg_GetCommandLine          EQU <Arg_GetCommandLineW>
+    Arg_GetCommandLineEx        EQU <Arg_GetCommandLineExW>
+ELSE ; ANSI
+    Arg_GetArgument             EQU <Arg_GetArgumentA>
+    Arg_GetCommandLine          EQU <Arg_GetCommandLineA>
+    Arg_GetCommandLineEx        EQU <Arg_GetCommandLineExA>
+ENDIF
+
 
 ; Numeric And Text Conversions:
 
@@ -390,9 +404,11 @@ GetAppPath              EQU <Path_GetAppPath>
 GetPathOnly             EQU <Path_GetPathOnly>
 NameFromPath            EQU <Path_NameFromPath>
 
-ArgByNumber             EQU <Arg_GetArgument>
-getcl                   EQU <Arg_GetCommandLine>
-getcl_ex                EQU <Arg_GetCommandLineEx>
+ArgByNumber             EQU <Arg_GetArgumentA>
+getcl                   EQU <Arg_GetCommandLineA>
+getcl_ex                EQU <Arg_GetCommandLineExA>
+ucArgByNum              EQU <Arg_GetArgumentW>
+
 
 ;ucArgByNum
 ;ucGetCL
@@ -448,11 +464,15 @@ Free                    EQU <Memory_Free>
 
 
 .CONST
+UASM64_ALIGN            TEXTEQU <ALIGN 16>
+Platform_Windows_x64    TEXTEQU <@Platform EQ 1> ; for conditional assembly
+Platform_Linux_x64      TEXTEQU <@Platform EQ 3> ; for conditional assembly
+
 IFNDEF FALSE
-FALSE                   EQU 0
+FALSE EQU 0
 ENDIF
 IFNDEF TRUE
-TRUE                    EQU 1
+TRUE EQU 1
 ENDIF
 
 

@@ -137,6 +137,12 @@ File_WriteMemoryToFileW,lpszFilename,lpMemory,qwMemoryLength
 Arg_GetArgument,lpszArgumentList,lpszDestination,nArgument,qwArgumentListReadOffset
 Arg_GetCommandLine,nArgument,lpszArgumentBuffer
 Arg_GetCommandLineEx,nArgument,lpszArgumentBuffer
+Arg_GetArgumentA,lpszArgumentList,lpszDestination,nArgument,qwArgumentListReadOffset
+Arg_GetCommandLineA,nArgument,lpszArgumentBuffer
+Arg_GetCommandLineExA,nArgument,lpszArgumentBuffer
+Arg_GetArgumentW,lpszArgumentList,lpszDestination,nArgument
+Arg_GetCommandLineW,nArgument,lpszArgumentBuffer
+Arg_GetCommandLineExW,nArgument,lpszArgumentBuffer
 
 Random_Number,base
 Random_Seed,TheSeed
@@ -251,6 +257,7 @@ NameFromPath,lpszPathFilename,lpszPath
 ArgByNumber,lpszArgumentList,lpszDestination,nArgument,qwArgumentListReadOffset
 getcl,nArgument,lpszArgumentBuffer
 getcl_ex,nArgument,lpszArgumentBuffer
+ucArgByNum,lpszArgumentList,lpszDestination,nArgument
 
 nrandom,base
 nseed,TheSeed
